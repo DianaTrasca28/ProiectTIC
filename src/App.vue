@@ -1,11 +1,14 @@
-<template>
-  <v-app>
-    <v-main>
-      <router-view />
-    </v-main>
+<template class="app">
+  <v-app class="white">
+  <menu-component></menu-component>
   </v-app>
 </template>
 
-<script setup>
-  //
+<script>
+  import MenuComponent from "./components/MenuComponent.vue"
+  export default {
+    name: "App",
+    components: {MenuComponent}
+  };
 </script>
+
