@@ -1,8 +1,9 @@
 <template>
       <MenuComponent />
       <FilterComponent />
-      <router-view />
-  </template>
+      <router-view></router-view>
+      
+</template>
   
   <script>
   import MenuComponent from "@/components/MenuComponent.vue";
@@ -13,5 +14,3 @@
     components: { MenuComponent, FilterComponent },
   };
   </script>
-  
- 

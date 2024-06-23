@@ -1,10 +1,7 @@
 <template>
-
+<FormSignUp/>
 </template>
 
-<script>
-
+<script setup>
+import FormSignUp from '@/components/FormSignUp.vue';
 </script>
-<style scoped>
-
-</style>
