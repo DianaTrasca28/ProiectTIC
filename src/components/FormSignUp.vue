@@ -1,4 +1,6 @@
 <template>
+    <div>
+        <MenuComponent/>
     <v-container style="display: flex; justify-content: center; align-items: center; padding-top: 4rem;">
       <v-card style = "width: 400px; max-width: 400px;">
       <v-row justify="center">
@@ -78,7 +80,11 @@
       </v-row>
       </v-card>
     </v-container>
+</div>
 </template>
+<script setup>
+    import MenuComponent from "@/components/MenuComponent.vue"; 
+  </script>
 
 <script>
 export default {

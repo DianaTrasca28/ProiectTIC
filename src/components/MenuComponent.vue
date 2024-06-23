@@ -46,7 +46,7 @@ export default {
         appTitle: 'Parfumuri de nișă',
         menuItems: [
             { title: 'Home', path: '/', icon: 'mdi-home' },
-            { title: 'Sign Up', path: '/signup', icon: 'mdi-account' },
+            { title: 'Login', path: '/login', icon: 'mdi-account' },
         ],
         menuItemsLogIn: [
             { title: 'Home', path: '/', icon: 'mdi-home' },
