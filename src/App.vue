@@ -1,14 +1,17 @@
 <template class="app">
-  <v-app class="white">
-  <menu-component></menu-component>
+  <v-app>
+    <router-view/>
   </v-app>
 </template>
 
 <script>
-  import MenuComponent from "./components/MenuComponent.vue"
+
   export default {
     name: "App",
-    components: {MenuComponent}
   };
 </script>
-
+<style>
+.v-application {
+    background-color: var(--v-background-base) !important;
+}
+</style>
