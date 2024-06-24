@@ -5,7 +5,6 @@
         <v-btn
           color="grey-lighten-3"
           v-bind="props"
-          style="margin-left: 50px;"
           append-icon="mdi-filter-menu-outline"
 
         >

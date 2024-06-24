@@ -1,8 +1,8 @@
 <template>
   <v-toolbar dense class="gradient-toolbar" height="140">
     <!-- Link si titlu pagina -->
-    <v-toolbar-title style="text-align: center;">
-    <router-link to="/" tag="span" style="cursor: pointer; color: gray; text-decoration: none; font-style: italic; font-family: 'Lucida Handwriting', cursive ;font-size: 1.8rem;">
+    <v-toolbar-title style="text-align: center; margin-left: 100px;">
+    <router-link to="/" tag="span" style="cursor: pointer; color: #696969; text-decoration: none; font-style: italic; font-family: 'Lucida Handwriting', cursive ;font-size: 1.5rem;">
       {{ appTitle }}
     </router-link>
     </v-toolbar-title>

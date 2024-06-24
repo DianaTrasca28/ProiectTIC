@@ -1,6 +1,7 @@
 <template>
     <div>
-        <MenuComponent/>
+      <MenuComponent/>
+      <BackComponent/>
     <v-container style="display: flex; justify-content: center; align-items: center; padding-top: 4rem;">
       <v-card style = "width: 400px; max-width: 400px;">
       <v-row justify="center">
@@ -84,6 +85,7 @@
 </template>
 <script setup>
     import MenuComponent from "@/components/MenuComponent.vue"; 
+    import BackComponent from "./BackComponent.vue";
   </script>
 
 <script>

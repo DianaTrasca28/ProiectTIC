@@ -1,6 +1,7 @@
 <template>
 <div>
-    <MenuComponent/>        
+    <MenuComponent/>
+    <BackComponent/>        
     <v-container
       style="
         display: flex;
@@ -64,10 +65,12 @@
 </div>
   </template>  
   <script setup>
-  import MenuComponent from "@/components/MenuComponent.vue"; 
+  import MenuComponent from "@/components/MenuComponent.vue";
+  import BackComponent from "./BackComponent.vue"; 
 </script>
   <script>
   import { mapGetters, mapActions } from 'vuex';
+  
   
   
   export default {

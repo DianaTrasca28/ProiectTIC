@@ -1,8 +1,9 @@
 <template>
-      <MenuComponent />
-      <FilterComponent />
-      <router-view></router-view>
-      
+  <div>
+    <MenuComponent />
+    <FilterComponent />
+    <router-view></router-view>
+  </div>
 </template>
   
   <script>
