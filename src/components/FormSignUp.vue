@@ -133,31 +133,32 @@ export default {
       }
 
       try {
-        const response = await fetch('http://localhost:8000/signup', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              firstname: this.firstName,
-              lastname: this.lastName,
-              email: this.email,
-              password: this.password,
-            }),
-          });
-
-        if (response.ok) {
-          console.log('User registered successfully!');
-          this.$router.push('/login');
-        } else {
-          console.error('Registration error');
-          this.errorMessage = 'There is already an account with the specified email address.';
-          
-        }
-      } catch (error) {
-        console.error('Error: ', error);
-        this.errorMessage = 'An error occurred during registration.';
-      }
+    const response = await fetch('http://localhost:8000/api/users/signup', {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            firstname: this.firstName,
+            lastname: this.lastName,
+            email: this.email,
+            username: this.username,
+            password: this.password,
+        }),
+    });
+    
+    if (response.ok) {
+        console.log('User registered successfully!');
+        this.$router.push('/login');
+    } else {
+        console.error('Registration error');
+        this.errorMessage = 'There is already an account with the specified email address.';
+    }
+} catch (error) {
+    console.error('Error: ', error);
+    this.errorMessage = 'An error occurred during registration.';
+}
     }
   }
 }
