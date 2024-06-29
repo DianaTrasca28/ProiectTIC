@@ -50,11 +50,11 @@ const router = createRouter({
   routes,
 })
 
-// router.beforeEach((to, from, next) => {
-//   if (to.meta.requiresAuth && !store.state.authModule.currentUser) {
-//     next('/login');
-//   } else {
-//     next();
-//   }
-// });
+router.beforeEach((to, from, next) => {
+  if (to.meta.requiresAuth && !store.state.authModule.currentUser) {
+    next('/login');
+  } else {
+    next();
+  }
+});
 export default router

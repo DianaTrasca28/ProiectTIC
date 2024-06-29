@@ -142,6 +142,7 @@ export default {
               firstname: this.firstName,
               lastname: this.lastName,
               email: this.email,
+              username: this.username,
               password: this.password,
             }),
           });

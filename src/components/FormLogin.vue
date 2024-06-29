@@ -67,11 +67,9 @@
   <script setup>
   import MenuComponent from "@/components/MenuComponent.vue";
   import BackComponent from "./BackComponent.vue"; 
-</script>
+  </script>
   <script>
   import { mapGetters, mapActions } from 'vuex';
-  
-  
   
   export default {
       data() {
@@ -101,6 +99,7 @@
           }
   
           try {
+            debugger
             await this.login({ email: this.email, password: this.password });
   
             if (this.authenticated) {
