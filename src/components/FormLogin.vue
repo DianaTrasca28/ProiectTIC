@@ -22,11 +22,11 @@
             >
             <v-form ref="loginForm" @submit.prevent="loginUser">
               <v-text-field
-                v-model="email"
-                label="Email"
+              v-model="username"
+                label="Username"
                 variant="solo"
-                :rules="[rules.required, rules.email]"
-                :error-messages="emailErrors"
+                :rules="[rules.required, rules.minUsernameLength]"
+                :error-messages="usernameErrors"
               ></v-text-field>
               <v-text-field
                 v-model="password"
@@ -67,27 +67,22 @@
   <script setup>
   import MenuComponent from "@/components/MenuComponent.vue";
   import BackComponent from "./BackComponent.vue"; 
-</script>
+  </script>
   <script>
   import { mapGetters, mapActions } from 'vuex';
-  
-  
   
   export default {
       data() {
         return {
           errorMessage: null,
           show: false,
-          email: '',
+          username: '',
           password: '',
-          emailErrors: [],
+          usernameErrors: [],
           passwordErrors: [],
           rules: {
             required: value => !!value || 'Field is required',
-            email(value) {
-              if (/^[a-z.-]+@[a-z.-]+\.[a-z]+$/i.test(value)) return true
-              return 'Must be a valid e-mail.'
-            },
+            minUsernameLength: (value) => (value && value.length >= 3) || 'Username must be at least 3 characters long',
           },
         }
       },computed:{
@@ -101,7 +96,8 @@
           }
   
           try {
-            await this.login({ email: this.email, password: this.password });
+            debugger
+            await this.login({ username: this.username, password: this.password });
   
             if (this.authenticated) {
               console.log("User successfully authenticated!");
