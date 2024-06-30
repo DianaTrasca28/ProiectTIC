@@ -1,5 +1,4 @@
 <template>
-<div>
     <MenuComponent/>
     <BackComponent/>        
     <v-container
@@ -22,7 +21,7 @@
             >
             <v-form ref="loginForm" @submit.prevent="loginUser">
               <v-text-field
-              v-model="username"
+                v-model="username"
                 label="Username"
                 variant="solo"
                 :rules="[rules.required, rules.minUsernameLength]"
@@ -62,7 +61,6 @@
         </v-row>
       </v-card>
     </v-container>
-</div>
   </template>  
   <script setup>
   import MenuComponent from "@/components/MenuComponent.vue";
@@ -96,7 +94,6 @@
           }
   
           try {
-            debugger
             await this.login({ username: this.username, password: this.password });
   
             if (this.authenticated) {

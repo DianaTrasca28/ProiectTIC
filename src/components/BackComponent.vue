@@ -13,17 +13,17 @@
     </v-container>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script>
+  import { defineComponent } from 'vue';
 
-export default defineComponent({
-  name: 'BackButton',
-  methods: {
-    goBack() {
-      this.$router.go(-1);
+  export default defineComponent({
+    name: 'BackButton',
+    methods: {
+      goBack() {
+        this.$router.go(-1);
+      }
     }
-  }
-});
+  });
 </script>
 <style scoped>
 .gradient-toolbar {

@@ -1,5 +1,4 @@
 <template>
-  <div>
     <MenuComponent/>
     <BackComponent/>
   <v-container style="display: flex; justify-content: center; align-items: center; padding-top: 4rem;">
@@ -73,7 +72,7 @@
           </v-card-actions>
         </v-form>
         <v-container>
-          <v-text>Already have an account? </v-text>
+          <div>Already have an account? </div>
           <router-link :to="'/login'">Log-in</router-link>
         </v-container>
         <v-card-text v-if="errorMessage" class="error-message">{{ errorMessage }}</v-card-text>
@@ -81,7 +80,6 @@
     </v-row>
     </v-card>
   </v-container>
-</div>
 </template>
 <script setup>
   import MenuComponent from "@/components/MenuComponent.vue"; 
