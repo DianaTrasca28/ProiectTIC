@@ -1,6 +1,6 @@
 <template>
     <v-container class="d-flex  justify-md-left">
-        <v-menu open-on-hover>
+        <v-menu :value="true">
       <template v-slot:activator="{ props }">
         <v-btn
           color="grey-lighten-3"
@@ -17,7 +17,13 @@
           v-for="(item, index) in itemsNote"
           :key="index"
         >
-          <v-list-item-title>{{ item.title }}</v-list-item-title>
+          <v-list-item-action>
+            <v-checkbox
+              v-model="item.checked"
+              :label="item.title"
+              :value="item.title"
+            ></v-checkbox>
+          </v-list-item-action>
         </v-list-item>
       </v-list>
     </v-menu>
@@ -30,14 +36,14 @@
 export default{
     data(){
         return {
-          itemsNote: [
-        { title: 'Vanilie' },
-        { title: 'Fructate' },
-        { title: 'Florale' },
-        { title: 'Animalice' },
-        {title: 'Gurmande'}
-      ],
-        }
+        itemsNote: [
+          { title: 'Vanilie', checked: false },
+          { title: 'Fructate', checked: false },
+          { title: 'Florale', checked: false },
+          { title: 'Animalice', checked: false },
+          { title: 'Gurmande', checked: false }
+        ],
+      }
     },
 }
 </script>

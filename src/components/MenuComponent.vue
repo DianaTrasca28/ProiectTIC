@@ -11,35 +11,50 @@
 
     <!-- SEARCH BAR SI icon -->
     <v-text-field
+      v-model="searchText"
       hide-details
       single-line
       variant="underlined"
+      @input="updateSearch"
     ></v-text-field>
     <v-btn icon>
       <v-icon>mdi-magnify</v-icon>
     </v-btn>
     <v-spacer></v-spacer>
-
-    <v-toolbar-items variant="plain" class="toolbar-items">
-      <v-btn
-          v-for="item in menuItems"
-          :to = "item.path"
-          :key="item.title"
-          :append-icon= item.icon
-      >
-      {{item.title }}
-      </v-btn>
-
-      <!-- <v-btn
-      append-icon="mdi-logout"
-      @click="logoutAction">Logout</v-btn> -->
-    </v-toolbar-items>
+    <div v-if="authenticated">
+      <v-toolbar-items variant="plain" class="toolbar-items">
+          <v-btn
+              v-for="item in menuItemsLogIn"
+              :to = "item.path"
+              :key="item.title"
+              :append-icon= item.icon
+          >
+          {{item.title }}
+          </v-btn>
+          <v-btn
+          append-icon="mdi-logout"
+          @click="logoutAction">Logout</v-btn>
+      </v-toolbar-items>
+    </div>
+    <div v-else>
+      <v-toolbar-items variant="plain" class="toolbar-items">
+        <v-btn
+            v-for="item in menuItems"
+            :to = "item.path"
+            :key="item.title"
+            :append-icon= item.icon
+        >
+        {{item.title }}
+        </v-btn>
+     </v-toolbar-items>
+    </div>
   </v-toolbar>
 
 
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex';
 export default {
     data(){
         return {
@@ -55,11 +70,25 @@ export default {
         ],
         }
     },
+    computed: {
+        ...mapGetters('authModule', ['authenticated', 'searchText']),
+        searchText: {
+          get() {
+            return this.$store.state.searchText;
+          },
+          set(value) {
+            this.updateSearchText(value);
+          }
+       }
+      },
     methods: {
-    logoutAction(){
+      ...mapActions('authModule', ['logout','updateSearchText']),
+      logoutAction(){
         this.$router.push('/');
         this.logout();
-    }
+      },
+      updateSearch(value) {
+        this.updateSearchText(value);     },
     },
 };
 </script>

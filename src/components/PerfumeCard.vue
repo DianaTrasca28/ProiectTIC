@@ -4,7 +4,7 @@
       <v-card-title>{{ perfume.name }}</v-card-title>
       <v-card-subtitle>{{ perfume.description }}</v-card-subtitle>
       <v-card-actions>
-        <v-btn color="orange-lighten-2" text>Explore</v-btn>
+        <v-btn color="orange-lighten-2" @click="addToWishlist" text>wishlist</v-btn>
         <v-spacer></v-spacer>
         <v-btn :icon="show ? 'mdi-chevron-up' : 'mdi-chevron-down'" @click="show = !show"></v-btn>
       </v-card-actions>
@@ -22,6 +22,7 @@
   </template>
   
   <script>
+  import { mapActions } from 'vuex';
   export default {
     name: 'PerfumeCard',
     props: {
@@ -32,7 +33,13 @@
     },
     data: () => ({
       show: false,
-    })
+    }),
+    methods: {
+    ...mapActions('authModule', ['addPerfumeToWishlist']),
+    addToWishlist() {
+      this.addPerfumeToWishlist(this.perfume);
+    }
+  }
   }
   </script>
   

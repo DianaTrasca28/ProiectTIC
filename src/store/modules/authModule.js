@@ -2,6 +2,8 @@ const authModule = {
     namespaced: true,
     state: {
       currentUser: null,
+      searchText: '',
+      perfumes: [],
     },
     getters: {
     
@@ -26,7 +28,19 @@ const authModule = {
         username: (state) =>{
           return state.currentUser ? state.currentUser.username : null;
         },
-        
+        searchText:(state) =>{
+          return state.searchText ? state.searchText : '';
+        },
+        filteredPerfumes: (state) => {
+          debugger
+          const searchText = state.searchText && typeof state.searchText === 'string' ? state.searchText.toLowerCase() : '';
+          return state.perfumes && state.perfumes.length > 0 ? state.perfumes.filter(perfume =>
+          perfume.name && perfume.name.toLowerCase().includes(searchText)
+          ) : []},
+        perfumes: (state) => {
+          return state.perfumes ? state.perfumes : [];
+        }, 
+      
       },
       mutations: {
 
@@ -57,8 +71,31 @@ const authModule = {
         CLEAR_USER(state) {
           state.currentUser = null;
         },
+        setSearchText(state, text) {
+          state.searchText = text;
+        },
+        setPerfumes(state, perfumes) {
+          state.perfumes = perfumes;
+        },
+        ADD_PERFUME_TO_WISHLIST(state, perfume) {
+          if (!Array.isArray(state.currentUser.wishlist)) {
+            state.currentUser.wishlist = [];
+          }
+          if (!state.currentUser.wishlist.some(p => p.id === perfume.id)) {
+            state.currentUser.wishlist.push(perfume);
+          }    
+        },
+        REMOVE_PERFUME_FROM_WISHLIST(state, perfume) {
+          state.currentUser.wishlist = state.currentUser.wishlist.filter(p => p.id !== perfume.id);
+        },
       },
       actions: {
+        async addPerfumeToWishlist({ commit }, perfume) {
+          commit('ADD_PERFUME_TO_WISHLIST', perfume);
+        },
+        async removePerfumeFromWishlist({ commit }, perfume) {
+          commit('REMOVE_PERFUME_FROM_WISHLIST', perfume);
+        },
         async login({ commit, state }, { username, password }) {
           try {
             const response = await fetch('http://localhost:8000/api/users/login', { 
@@ -88,6 +125,9 @@ const authModule = {
           commit('SET_AUTHENTICATED', false); 
           commit('CLEAR_USER', null); 
           localStorage.clear();
+        },
+        updateSearchText({ commit }, text) {
+          commit('setSearchText', text);
         },
       },
   };
